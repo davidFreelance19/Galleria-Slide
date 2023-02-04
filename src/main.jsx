@@ -9,6 +9,7 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <Layout />,
+    loader: galleryLoader,
     children: [
       {
         index: true,

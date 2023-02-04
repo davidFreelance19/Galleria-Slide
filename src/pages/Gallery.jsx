@@ -1,7 +1,5 @@
 import styled from "@emotion/styled";
-import { useParams, useLoaderData, Link, useNavigate } from "react-router-dom";
-import arrowLeft from "../assets/shared/icon-back-button.svg";
-import arrowRight from "../assets/shared/icon-next-button.svg";
+import { useParams, useLoaderData, Link } from "react-router-dom";
 
 const ContainerImage = styled.div`
   background-repeat: no-repeat;
@@ -69,7 +67,6 @@ const ContainerDescription = styled.div`
   }
 `;
 const Gallery = () => {
-  const navigate = useNavigate();
   const { id } = useParams();
   const datos = useLoaderData();
   const {
@@ -82,22 +79,7 @@ const Gallery = () => {
     },
     artist: { image, nameArtist },
   } = datos.find((pintura) => pintura.name === id);
-  const navegacion = (salto) => {
-    let indexNext
-    if (salto === "next") {
-       indexNext =
-        datos.findIndex((dato) => dato.name === id) + 1 > 14
-          ? 0
-          : datos.findIndex((dato) => dato.name === id) + 1;
-    }else{
-        indexNext =
-        datos.findIndex((dato) => dato.name === id) - 1 < 0
-          ? 14
-          : datos.findIndex((dato) => dato.name === id) - 1;
-    }
-    const url = datos[indexNext].name.trim();
-    navigate(`/${url}`)
-  };
+
   return (
     <>
       <Main>
@@ -111,7 +93,7 @@ const Gallery = () => {
               backgroundImage: `url(${large})`,
             }}
           ></ContainerImage>
-          <img src={image} />
+          <img src={image} alt='picture-hero'/>
         </blockquote>
         <ContainerDescription>
           <p className="year">{year}</p>
@@ -121,10 +103,6 @@ const Gallery = () => {
           </div>
         </ContainerDescription>
       </Main>
-      <footer>
-        <img src={arrowLeft} onClick={() => navegacion('before')}/>
-        <img src={arrowRight} onClick={() => navegacion('next')} />
-      </footer>
     </>
   );
 };

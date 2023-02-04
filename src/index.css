@@ -41,3 +41,14 @@ footer img{
 footer img:hover{
   cursor: pointer;
 }
+.container__slider {
+  width: 1360px; /* Full-width */
+  height: 1px; /* Specified height */
+  margin: 0 auto;
+  margin-top: 7rem;
+  background: #d3d3d3; /* Grey background */
+}
+.slider{
+  height: 100%;
+  background-color: #000;
+}

@@ -1,5 +1,6 @@
 import { Outlet, Link, useLocation, useLoaderData } from "react-router-dom";
 import styled from "@emotion/styled";
+import Slider from "./Slider";
 import logo from "../assets/shared/logo.svg";
 const Header = styled.header`
   width: 1360px;
@@ -16,8 +17,11 @@ const Navegacion = styled.nav`
   width: 100%;
   margin: 0 auto;
 `;
+
 const Layout = () => {
+  const datos = useLoaderData();
   const location = useLocation();
+
   return (
     <>
       <Header>
@@ -33,6 +37,7 @@ const Layout = () => {
         </Navegacion>
       </Header>
       <Outlet />
+      {location.pathname === "/" ? <></> : <Slider datos={datos}></Slider>}
     </>
   );
 };
