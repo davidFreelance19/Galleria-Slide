@@ -48,7 +48,7 @@ const Card = styled.div`
   }
 `;
 export async function loader() {
-  const respuesta = await fetch("../../db/data.json");
+  const respuesta = await fetch("http://127.0.0.1:5173/../../db/data.json");
   const resultado = await respuesta.json();
   return resultado;
 }
